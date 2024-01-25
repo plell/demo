@@ -59,7 +59,7 @@ const Donut = () => {
 
 const white = new Color("#ffffff");
 
-function Sprinkle({ random, color = new Color(), ...props }) {
+function Sprinkle({ random = 1, color = new Color(), ...props }) {
   const ref = useRef<typeof Instance | null>(null);
 
   useFrame((state) => {
