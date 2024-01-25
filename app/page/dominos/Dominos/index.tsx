@@ -7,7 +7,7 @@ import {
   RigidBody,
 } from "@react-three/rapier";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { CurvedLine } from "./CurvedLine";
+import CurvedLine from "./CurvedLine";
 import { MeshStandardMaterial, Object3D, Vector3 } from "three";
 
 import { initDominos } from "./constants";
@@ -111,12 +111,6 @@ const Dominos = () => {
     return popped;
   }, [loadedPoints]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      startFall();
-    }, 500);
-  }, [dominoInstances.length]);
-
   const startFall = useCallback(() => {
     if (
       instancedRigidBodiesRef?.current?.length &&
@@ -143,7 +137,13 @@ const Dominos = () => {
 
       first.applyImpulse(direction, true);
     }
-  }, [instancedRigidBodiesRef.current]);
+  }, [instancedRigidBodiesRef?.current?.length]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      startFall();
+    }, 500);
+  }, [dominoInstances.length, startFall]);
 
   const doPoints = (e: ThreeEvent<PointerEvent>) => {
     if (mouseDown) {
@@ -213,6 +213,7 @@ const Dominos = () => {
         restitution={0}
         // friction={0.1}
         // restitution={0}
+        //   @ts-ignore
         instances={dominoInstances}
         ref={instancedRigidBodiesRef}
         // onCollisionEnter={() => {}}
@@ -225,6 +226,7 @@ const Dominos = () => {
         <instancedMesh
           material={emissiveMaterial}
           castShadow
+          //   @ts-ignore
           args={[null, null, dominoInstances.length]}
         >
           <boxGeometry args={[3, 5, 1]} />

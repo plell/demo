@@ -8,7 +8,7 @@ type Props = {
   points: Vector3[];
 };
 
-export const CurvedLine = ({ points }: Props) => {
+const CurvedLine = ({ points }: Props) => {
   if (!points.length) {
     return null;
   }
@@ -22,3 +22,5 @@ export const CurvedLine = ({ points }: Props) => {
     />
   );
 };
+
+export default CurvedLine;

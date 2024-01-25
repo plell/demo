@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Top from "./components/Top";
 import ClickDetector from "./components/ClickDetector";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 

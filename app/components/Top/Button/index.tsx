@@ -13,7 +13,7 @@ const Button = ({ href, label }: Props) => {
 
   const selected = useMemo(() => {
     return href === pathname;
-  }, [pathname]);
+  }, [href, pathname]);
 
   return (
     <Link

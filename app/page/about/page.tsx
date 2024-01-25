@@ -1,13 +1,12 @@
+import { Suspense } from "react";
 import ThreeCanvas from "../../components/ThreeCanvas";
 import Scene from "./components/Scene";
 
 const About = () => {
   return (
-    <>
-      <ThreeCanvas cameraControls={true}>
-        <Scene />
-      </ThreeCanvas>
-    </>
+    <ThreeCanvas cameraControls={true}>
+      <Scene />
+    </ThreeCanvas>
   );
 };
 

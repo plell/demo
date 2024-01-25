@@ -1,9 +1,8 @@
 "use client";
 
-import { Canvas, useFrame } from "@react-three/fiber";
-import { CameraControls, Stage } from "@react-three/drei";
-import { useRef } from "react";
-import { Mesh } from "three";
+import { Canvas } from "@react-three/fiber";
+import { CameraControls } from "@react-three/drei";
+import { Suspense } from "react";
 
 const Lights = () => {
   return (
@@ -22,12 +21,18 @@ type Props = {
 
 const ThreeCanvas = ({ children, cameraControls, cameraPosition }: Props) => {
   return (
-    <Canvas camera={{ position: cameraPosition }}>
-      {cameraControls && <CameraControls />}
-      <Lights />
-      {children}
-    </Canvas>
+    <Suspense fallback={<CanvasLoader />}>
+      <Canvas camera={{ position: cameraPosition }}>
+        {cameraControls && <CameraControls />}
+        <Lights />
+        {children}
+      </Canvas>
+    </Suspense>
   );
+};
+
+const CanvasLoader = () => {
+  return <div></div>;
 };
 
 export default ThreeCanvas;
