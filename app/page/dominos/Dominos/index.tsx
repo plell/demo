@@ -7,6 +7,7 @@ import {
   RigidBody,
 } from "@react-three/rapier";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+
 import CurvedLine from "./CurvedLine";
 import { MeshStandardMaterial, Object3D, Vector3 } from "three";
 

@@ -65,11 +65,13 @@ function Sprinkle({ random = 1, color = new Color(), ...props }) {
   useFrame((state) => {
     const t = state.clock.getElapsedTime() + random * 10000;
     if (ref.current) {
+      // @ts-ignore
       ref.current.rotation.set(
         Math.cos(t / 4) / 2,
         Math.sin(t / 4) / 2,
         Math.cos(t / 1.5) / 2
       );
+      // @ts-ignore
       ref.current.position.y = Math.sin(t / 1.5) / 2;
     }
   });
